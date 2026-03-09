@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="width=device-width, initial-scale=1.0">
+        <link rel="shortcut" href="favicon.ico" type="image/x-icon">
+        <title>MoVies</title>
+        <style>
+            
+            body { background: #14698E; margin: 0; display: flex; height: 100vh; }
+            .logo {
+                display: flex;
+                background: url('img/Logo.jpg')center/cover;
+                width: 50px;
+                height: 50px;
+                margin: 20px 20px;
+                border: none;
+                border-radius: 50%;
+                animation: 1s beating infinite alternate;
+            }
+            @keyframes beating {
+                0% {
+                    transform: scale(1);
+                }
+                100% {
+                    transform: scale(1.2);
+                }
+            }
+            h1 {
+                color: white;
+            }
+            #slide { width: 80vw; height: 80vh; box-shadow: 0 0 10px #333; margin: auto; 
+                display: flex; justify-content: space-between; align-items: center;
+                transition: 1s;}
+            button {
+                border: none;
+                border-radius: 60%;
+                background-color: #FF0000;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="logo"></div>
+        <h1>MoVies</h1>
+        <div id="slide">
+            <button onclick="change(-1)">⯇</button>
+            <button onclick="change(1)">⯈</button>
+        </div>
+
+        <script>
+            let slide = document.getElementById('slide')
+            let x = 1
+            let timer = setTimeout(change, 0, 0)
+
+            function change(dir) {
+                clearTimeout(timer)
+                x += dir
+                if (x < 1) x = 6
+                if (x > 6) x = 1
+                slide.style = `background: url('img/${x}.jpg') center/cover`
+                timer = setTimeout(change, 5000, 1)
+            }
+        </script>
+    </body>
+</html>
